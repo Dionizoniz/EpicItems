@@ -23,11 +23,6 @@ namespace EpicItems.UI.MainMenu
             _view.ShowShop();
         }
 
-        public void ShowInventory()
-        {
-            _view.ShowInventory();
-        }
-
         public void ExitGame()
         {
             _model.ExitGame();

@@ -21,9 +21,5 @@ namespace EpicItems.UI.MainMenu
         {
             Instantiate(_itemPanelToSpawn);
         }
-
-        public void ShowInventory()
-        {
-        }
     }
 }
