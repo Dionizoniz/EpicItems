@@ -19,11 +19,11 @@ namespace EpicItems.UI.MainMenu
 
         public void ShowShop()
         {
+            Instantiate(_itemPanelToSpawn);
         }
 
         public void ShowInventory()
         {
-            Instantiate(_itemPanelToSpawn);
         }
     }
 }
