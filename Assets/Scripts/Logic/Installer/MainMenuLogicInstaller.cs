@@ -1,4 +1,5 @@
 ﻿using EpicItems.Core.Entities.Installers;
+using EpicItems.Core.Providers;
 using EpicItems.Logic.Items;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -13,6 +14,7 @@ namespace EpicItems.Logic.Installer
         private Camera _camera;
 
         private IItemsProvider _itemsProvider;
+        private IExitGameProvider _exitGameProvider;
 
         private void Awake()
         {
@@ -29,6 +31,7 @@ namespace EpicItems.Logic.Installer
         private void CreateInstances()
         {
             _itemsProvider = new ItemsProvider();
+            _exitGameProvider = new ExitGameProvider();
         }
 
         protected override void Start()
