@@ -11,5 +11,10 @@ namespace EpicItems.UI.ItemPanel
         {
             _itemsProvider = itemsProvider;
         }
+
+        public void ClosePanel()
+        {
+            _view.ClosePanel();
+        }
     }
 }
