@@ -21,7 +21,7 @@ namespace EpicItems.Logic.Items
             _server = new DataServerMock();
             _cancellationTokenSource = new CancellationTokenSource();
 
-            LoadItemsFromServer();
+            _ = LoadItemsFromServer();
         }
 
         private async Task LoadItemsFromServer()
