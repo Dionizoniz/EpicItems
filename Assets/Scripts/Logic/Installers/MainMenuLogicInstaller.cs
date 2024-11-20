@@ -4,7 +4,7 @@ using EpicItems.Logic.Items;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace EpicItems.Logic.Installer
+namespace EpicItems.Logic.Installers
 {
     public class MainMenuLogicInstaller : BaseInstaller, IMainMenuLogicInstaller
     {

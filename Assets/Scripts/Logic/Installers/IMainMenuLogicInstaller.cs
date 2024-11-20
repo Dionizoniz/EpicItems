@@ -1,7 +1,6 @@
-﻿namespace EpicItems.Logic.Installer
+﻿namespace EpicItems.Logic.Installers
 {
     public interface IMainMenuLogicInstaller
     {
-        
     }
 }
