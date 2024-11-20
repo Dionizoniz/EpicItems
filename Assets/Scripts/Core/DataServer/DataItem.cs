@@ -1,20 +1,23 @@
-﻿public class DataItem
+﻿namespace EpicItems.Core.DataServer
 {
-	public enum CategoryType
+	public class DataItem
 	{
-		RED,
-		GREEN,
-		BLUE
-	}
+		public enum CategoryType
+		{
+			RED,
+			GREEN,
+			BLUE
+		}
 
-	public readonly CategoryType Category;
-	public readonly string Description;
-	public readonly bool Special;
+		public readonly CategoryType Category;
+		public readonly string Description;
+		public readonly bool Special;
 
-	public DataItem(CategoryType category, string description, bool special)
-	{
-		Category = category;
-		Description = description;
-		Special = special;
+		public DataItem(CategoryType category, string description, bool special)
+		{
+			Category = category;
+			Description = description;
+			Special = special;
+		}
 	}
 }
