@@ -10,8 +10,8 @@ namespace EpicItems.Logic.Items
     {
         public event Action OnDataLoaded = delegate { };
 
-        private IDataServer _server;
-        private CancellationToken _cancellationToken;
+        private readonly IDataServer _server;
+        private readonly CancellationTokenSource _cancellationTokenSource;
 
         public IList<DataItem> Items { get; private set; }
         public bool IsDataAvailable { get; private set; }
@@ -19,7 +19,7 @@ namespace EpicItems.Logic.Items
         public ItemsProvider()
         {
             _server = new DataServerMock();
-            _cancellationToken = new CancellationToken();
+            _cancellationTokenSource = new CancellationTokenSource();
 
             LoadItemsFromServer();
         }
@@ -28,8 +28,8 @@ namespace EpicItems.Logic.Items
         {
             try
             {
-                int size = await _server.DataAvailable(_cancellationToken);
-                Items = await _server.RequestData(0, size, _cancellationToken);
+                int size = await _server.DataAvailable(_cancellationTokenSource.Token);
+                Items = await _server.RequestData(0, size, _cancellationTokenSource.Token);
 
                 IsDataAvailable = true;
                 OnDataLoaded.Invoke();
@@ -38,6 +38,12 @@ namespace EpicItems.Logic.Items
             {
                 Console.WriteLine(e);
             }
+        }
+
+        private void OnDestroy()
+        {
+            _cancellationTokenSource.Cancel();
+            _cancellationTokenSource.Dispose();
         }
     }
 }
