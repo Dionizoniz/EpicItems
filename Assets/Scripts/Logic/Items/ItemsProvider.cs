@@ -40,7 +40,12 @@ namespace EpicItems.Logic.Items
             }
         }
 
-        private void OnDestroy()
+        ~ItemsProvider()
+        {
+            ClearCancellationTokenSource();
+        }
+
+        private void ClearCancellationTokenSource()
         {
             _cancellationTokenSource.Cancel();
             _cancellationTokenSource.Dispose();
