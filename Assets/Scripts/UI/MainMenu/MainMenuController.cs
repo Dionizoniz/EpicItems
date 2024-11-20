@@ -7,12 +7,15 @@ namespace EpicItems.UI.MainMenu
     public class MainMenuController : Controller<MainMenuModel, MainMenuView>, IMainMenuController
     {
         private IItemsProvider _itemsProvider;
-        private ExitGameProvider _exitGameProvider;
+        private IExitGameProvider _exitGameProvider;
 
-        public void InjectData(IItemsProvider itemsProvider, ExitGameProvider exitGameProvider)
+        public void InjectData(IItemsProvider itemsProvider, IExitGameProvider exitGameProvider)
         {
             _itemsProvider = itemsProvider;
             _exitGameProvider = exitGameProvider;
+
+            _view.InjectData(_itemsProvider);
+            _model.InjectData(_exitGameProvider);
         }
 
         public void ShowShop()

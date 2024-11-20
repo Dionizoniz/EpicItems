@@ -13,8 +13,8 @@ namespace EpicItems.Logic.Installers
         [SerializeField]
         private Camera _camera;
 
-        private IItemsProvider _itemsProvider;
-        private IExitGameProvider _exitGameProvider;
+        public IItemsProvider ItemsProvider { get; private set; }
+        public IExitGameProvider ExitGameProvider { get; private set; }
 
         private void Awake()
         {
@@ -30,8 +30,8 @@ namespace EpicItems.Logic.Installers
 
         private void CreateInstances()
         {
-            _itemsProvider = new ItemsProvider();
-            _exitGameProvider = new ExitGameProvider();
+            ItemsProvider = new ItemsProvider();
+            ExitGameProvider = new ExitGameProvider();
         }
 
         protected override void Start()

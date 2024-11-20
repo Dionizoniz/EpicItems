@@ -5,9 +5,9 @@ namespace EpicItems.UI.MainMenu
 {
     public class MainMenuModel : Model<MainMenuView>
     {
-        private ExitGameProvider _exitGameProvider;
+        private IExitGameProvider _exitGameProvider;
 
-        public void InjectData(ExitGameProvider exitGameProvider)
+        public void InjectData(IExitGameProvider exitGameProvider)
         {
             _exitGameProvider = exitGameProvider;
         }
