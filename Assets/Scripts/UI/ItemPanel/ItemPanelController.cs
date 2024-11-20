@@ -1,10 +1,14 @@
-﻿using EpicItems.Core.Entities.MVC;
+﻿using System;
+using EpicItems.Core.Entities.MVC;
 using EpicItems.Logic.Items;
 
 namespace EpicItems.UI.ItemPanel
 {
     public class ItemPanelController : Controller<ItemPanelModel, ItemPanelView>, IItemPanelController
     {
+        public event Action OnClose = delegate
+                                      { };
+
         private IItemsProvider _itemsProvider;
 
         public void InjectData(IItemsProvider itemsProvider)
@@ -20,6 +24,7 @@ namespace EpicItems.UI.ItemPanel
         public void ClosePanel()
         {
             _view.ClosePanel();
+            OnClose.Invoke();
         }
     }
 }

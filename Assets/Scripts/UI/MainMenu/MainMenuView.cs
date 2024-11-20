@@ -10,6 +10,9 @@ namespace EpicItems.UI.MainMenu
         [SerializeField]
         private ItemPanelController _itemPanelToSpawn;
 
+        [Space, SerializeField]
+        private GameObject _content;
+
         private IItemsProvider _itemsProvider;
         private IItemPanelController _spawnedItemPanel;
 
@@ -28,6 +31,8 @@ namespace EpicItems.UI.MainMenu
             {
                 SpawnShopPanel();
             }
+
+            HideContent();
         }
 
         private void ShowSpawnedShopPanel()
@@ -39,6 +44,26 @@ namespace EpicItems.UI.MainMenu
         {
             _spawnedItemPanel = Instantiate(_itemPanelToSpawn);
             _spawnedItemPanel.InjectData(_itemsProvider);
+
+            _spawnedItemPanel.OnClose += ShowContent;
+        }
+
+        private void ShowContent()
+        {
+            _content.SetActive(true);
+        }
+
+        private void HideContent()
+        {
+            _content.SetActive(false);
+        }
+
+        private void OnDisable()
+        {
+            if (_spawnedItemPanel != null)
+            {
+                _spawnedItemPanel.OnClose -= ShowContent;
+            }
         }
     }
 }

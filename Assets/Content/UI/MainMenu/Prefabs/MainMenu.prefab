@@ -291,6 +291,7 @@ MonoBehaviour:
   _gameObject: {fileID: 0}
   _transform: {fileID: 0}
   _itemPanelToSpawn: {fileID: 9167604786600967652, guid: b987829feb2034e408f93187b4b50b9c, type: 3}
+  _content: {fileID: 2152999432715609910}
 --- !u!114 &7316798623818934024
 MonoBehaviour:
   m_ObjectHideFlags: 0
