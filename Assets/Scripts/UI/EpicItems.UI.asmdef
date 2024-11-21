@@ -1,7 +1,11 @@
 {
     "name": "EpicItems.UI",
     "rootNamespace": "EpicItems",
-    "references": [],
+    "references": [
+        "GUID:88f85c95cf1f17e4dad6791a0a6b2595",
+        "GUID:f6ab5ea73f421164e99af869c342a0df",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
