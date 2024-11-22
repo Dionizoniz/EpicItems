@@ -139,6 +139,8 @@ MonoBehaviour:
   _transform: {fileID: 0}
   _itemToSpawn: {fileID: 2704303349892637174, guid: 6434c81744ee744409bb5b8188ad72cb, type: 3}
   _root: {fileID: 5522421018323124462}
+  _previousPageButton: {fileID: 1982372012351516382}
+  _nextPageButton: {fileID: 4261721110285245860}
 --- !u!114 &5667570692868833257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -455,6 +457,34 @@ PrefabInstance:
       propertyPath: m_Interactable
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2242620981975800265, guid: d928fdbee27a885498b04bd5275a6e3c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2242620981975800265, guid: d928fdbee27a885498b04bd5275a6e3c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2242620981975800265, guid: d928fdbee27a885498b04bd5275a6e3c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 9167604786600967652}
+    - target: {fileID: 2242620981975800265, guid: d928fdbee27a885498b04bd5275a6e3c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2242620981975800265, guid: d928fdbee27a885498b04bd5275a6e3c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowPreviousPage
+      objectReference: {fileID: 0}
+    - target: {fileID: 2242620981975800265, guid: d928fdbee27a885498b04bd5275a6e3c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: EpicItems.UI.ItemPanel.ItemPanelController, EpicItems.UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 2242620981975800265, guid: d928fdbee27a885498b04bd5275a6e3c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4586540865165804163, guid: d928fdbee27a885498b04bd5275a6e3c, type: 3}
       propertyPath: m_Name
       value: PreviousButton
@@ -544,6 +574,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d928fdbee27a885498b04bd5275a6e3c, type: 3}
+--- !u!114 &1982372012351516382 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2242620981975800265, guid: d928fdbee27a885498b04bd5275a6e3c, type: 3}
+  m_PrefabInstance: {fileID: 332614573228177175}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &9128404705560234964 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8805439446780361923, guid: d928fdbee27a885498b04bd5275a6e3c, type: 3}
@@ -560,6 +601,34 @@ PrefabInstance:
     - target: {fileID: 782895276375461203, guid: d928fdbee27a885498b04bd5275a6e3c, type: 3}
       propertyPath: m_text
       value: NEXT
+      objectReference: {fileID: 0}
+    - target: {fileID: 2242620981975800265, guid: d928fdbee27a885498b04bd5275a6e3c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2242620981975800265, guid: d928fdbee27a885498b04bd5275a6e3c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2242620981975800265, guid: d928fdbee27a885498b04bd5275a6e3c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 9167604786600967652}
+    - target: {fileID: 2242620981975800265, guid: d928fdbee27a885498b04bd5275a6e3c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2242620981975800265, guid: d928fdbee27a885498b04bd5275a6e3c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowNextPage
+      objectReference: {fileID: 0}
+    - target: {fileID: 2242620981975800265, guid: d928fdbee27a885498b04bd5275a6e3c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: EpicItems.UI.ItemPanel.ItemPanelController, EpicItems.UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 2242620981975800265, guid: d928fdbee27a885498b04bd5275a6e3c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4586540865165804163, guid: d928fdbee27a885498b04bd5275a6e3c, type: 3}
       propertyPath: m_Name
@@ -650,6 +719,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d928fdbee27a885498b04bd5275a6e3c, type: 3}
+--- !u!114 &4261721110285245860 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2242620981975800265, guid: d928fdbee27a885498b04bd5275a6e3c, type: 3}
+  m_PrefabInstance: {fileID: 2610908160819758189}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &6775942327989614766 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8805439446780361923, guid: d928fdbee27a885498b04bd5275a6e3c, type: 3}

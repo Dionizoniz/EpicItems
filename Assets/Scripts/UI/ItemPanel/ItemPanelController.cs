@@ -1,7 +1,6 @@
 ﻿using System;
 using EpicItems.Core.Entities.MVC;
 using EpicItems.Logic.Items;
-using UnityEngine;
 
 namespace EpicItems.UI.ItemPanel
 {
@@ -10,9 +9,6 @@ namespace EpicItems.UI.ItemPanel
         public event Action OnClose = delegate { };
 
         private IItemsProvider _itemsProvider;
-
-        // TEST CODE
-        
 
         public void InjectData(IItemsProvider itemsProvider)
         {
@@ -30,6 +26,16 @@ namespace EpicItems.UI.ItemPanel
         {
             _view.ClosePanel();
             OnClose.Invoke();
+        }
+
+        public void ShowNextPage()
+        {
+            _view.ShowNextPage();
+        }
+
+        public void ShowPreviousPage()
+        {
+            _view.ShowPreviousPage();
         }
     }
 }
