@@ -123,8 +123,6 @@ MonoBehaviour:
   _transform: {fileID: 0}
   _model: {fileID: 5667570692868833257}
   _view: {fileID: 3263028710811410306}
-  _itemToSpawn: {fileID: 2704303349892637174, guid: 6434c81744ee744409bb5b8188ad72cb, type: 3}
-  _root: {fileID: 5522421018323124462}
 --- !u!114 &3263028710811410306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,6 +137,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameObject: {fileID: 0}
   _transform: {fileID: 0}
+  _itemToSpawn: {fileID: 2704303349892637174, guid: 6434c81744ee744409bb5b8188ad72cb, type: 3}
+  _root: {fileID: 5522421018323124462}
 --- !u!114 &5667570692868833257
 MonoBehaviour:
   m_ObjectHideFlags: 0
