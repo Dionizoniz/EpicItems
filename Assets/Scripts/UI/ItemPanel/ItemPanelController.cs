@@ -14,28 +14,30 @@ namespace EpicItems.UI.ItemPanel
         {
             _itemsProvider = itemsProvider;
 
-            _view.InjectData(_itemsProvider);
+            _model.InjectData(_itemsProvider);
         }
 
         public void ShowPanel()
         {
             _view.ShowPanel();
+            _model.PrepareContent();
         }
 
         public void ClosePanel()
         {
             _view.ClosePanel();
+            _model.ClosePanel();
             OnClose.Invoke();
         }
 
         public void ShowNextPage()
         {
-            _view.ShowNextPage();
+            _model.ShowNextPage();
         }
 
         public void ShowPreviousPage()
         {
-            _view.ShowPreviousPage();
+            _model.ShowPreviousPage();
         }
     }
 }

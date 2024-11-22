@@ -12,7 +12,7 @@ namespace EpicItems.Core.Entities.MVC
         [SerializeField]
         protected TView _view;
 
-        private void Start()
+        private void Awake()
         {
             Initialize();
         }

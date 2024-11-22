@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using EpicItems.Core.DataServer;
 using EpicItems.Core.Entities.MVC;
-using EpicItems.Logic.Items;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,9 +8,6 @@ namespace EpicItems.UI.ItemPanel
 {
     public class ItemPanelView : View
     {
-        // TODO move some code to Model
-        private const int ITEMS_PER_PAGE = 5;
-
         [SerializeField]
         private ItemController _itemToSpawn;
         [SerializeField]
@@ -22,92 +18,58 @@ namespace EpicItems.UI.ItemPanel
         [SerializeField]
         private Button _nextPageButton;
 
-        private IItemsProvider _itemsProvider;
-
-        private List<ItemController> _spawnedItems = new();
-        private int _currentPageIndex;
-
-        public void InjectData(IItemsProvider itemsProvider)
-        {
-            _itemsProvider = itemsProvider;
-        }
+        private readonly List<ItemController> _spawnedItems = new();
 
         public void ShowPanel()
         {
-            PrepareContent();
             _gameObject.SetActive(true);
         }
 
-        private void PrepareContent()
+        public void SpawnItemsFor(int pageIndex, int pageItemsCount, IList<DataItem> items)
         {
-            if (_itemsProvider.IsDataAvailable)
-            {
-                SpawnFirstPage();
-            }
-            else
-            {
-                _itemsProvider.OnDataLoaded += SpawnFirstPage;
-            }
-        }
-
-        private void SpawnFirstPage()
-        {
-            _itemsProvider.OnDataLoaded -= SpawnFirstPage;
-            _currentPageIndex = 0;
-
-            SpawnItemsFor(_currentPageIndex);
-        }
-
-        private void SpawnItemsFor(int pageIndex)
-        {
-            IList<DataItem> items = _itemsProvider.Items;
-            int minIndex = pageIndex * ITEMS_PER_PAGE;
-            int maxIndex = minIndex + ITEMS_PER_PAGE;
-
-            foreach (var item in _spawnedItems)
-            {
-                Destroy(item.gameObject);
-            }
-
-            _spawnedItems.Clear();
+            int minIndex = pageIndex * pageItemsCount;
+            int maxIndex = minIndex + pageItemsCount;
 
             for (int i = minIndex; i < maxIndex && i < items.Count; i++)
             {
-                var item = Instantiate(_itemToSpawn, _root);
-                item.Initialize(i + 1, _itemsProvider.Items[i]);
-                _spawnedItems.Add(item);
+                SpawnItem(items[i], i);
             }
 
+            UpdatePreviousPageButton(pageIndex);
+            UpdateNextPageButton(maxIndex, items.Count);
+        }
+
+        private void SpawnItem(DataItem item, int itemIndex)
+        {
+            ItemController spawnedItem = Instantiate(_itemToSpawn, _root);
+            spawnedItem.Initialize(itemIndex + 1, item);
+            _spawnedItems.Add(spawnedItem);
+        }
+
+        private void UpdatePreviousPageButton(int pageIndex)
+        {
             _previousPageButton.interactable = pageIndex > 0;
-            _nextPageButton.interactable = (_currentPageIndex + 1) * ITEMS_PER_PAGE < items.Count;
+        }
+
+        private void UpdateNextPageButton(int maxIndex, int itemsCount)
+        {
+            _nextPageButton.interactable = maxIndex < itemsCount;
         }
 
         public void ClosePanel()
         {
             _gameObject.SetActive(false);
+            ClearSpawnedItems();
         }
 
-        private void OnDestroy()
+        private void ClearSpawnedItems()
         {
-            _itemsProvider.OnDataLoaded -= SpawnFirstPage;
-        }
-
-        public void ShowNextPage()
-        {
-            if (_currentPageIndex * ITEMS_PER_PAGE < _itemsProvider.Items.Count)
+            foreach (var item in _spawnedItems)
             {
-                _currentPageIndex++;
-                SpawnItemsFor(_currentPageIndex);
+                Destroy(item.gameObject); // Return to pool
             }
-        }
 
-        public void ShowPreviousPage()
-        {
-            if (_currentPageIndex > 0)
-            {
-                _currentPageIndex--;
-                SpawnItemsFor(_currentPageIndex);
-            }
+            _spawnedItems.Clear();
         }
     }
 }
