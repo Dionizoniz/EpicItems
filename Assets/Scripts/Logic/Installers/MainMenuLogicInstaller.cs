@@ -33,15 +33,5 @@ namespace EpicItems.Logic.Installers
             ItemsProvider = new ItemsProvider();
             ExitGameProvider = new ExitGameProvider();
         }
-
-        protected override void Start()
-        {
-            InitializeSystems();
-            base.Start();
-        }
-
-        private void InitializeSystems()
-        {
-        }
     }
 }
