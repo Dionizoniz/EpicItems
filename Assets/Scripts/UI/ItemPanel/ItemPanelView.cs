@@ -30,6 +30,8 @@ namespace EpicItems.UI.ItemPanel
             int minIndex = pageIndex * pageItemsCount;
             int maxIndex = minIndex + pageItemsCount;
 
+            ClearSpawnedItems();
+
             for (int i = minIndex; i < maxIndex && i < items.Count; i++)
             {
                 SpawnItem(items[i], i);
@@ -37,6 +39,16 @@ namespace EpicItems.UI.ItemPanel
 
             UpdatePreviousPageButton(pageIndex);
             UpdateNextPageButton(maxIndex, items.Count);
+        }
+
+        private void ClearSpawnedItems()
+        {
+            foreach (var item in _spawnedItems)
+            {
+                Destroy(item.gameObject); // Return to pool
+            }
+
+            _spawnedItems.Clear();
         }
 
         private void SpawnItem(DataItem item, int itemIndex)
@@ -60,16 +72,6 @@ namespace EpicItems.UI.ItemPanel
         {
             _gameObject.SetActive(false);
             ClearSpawnedItems();
-        }
-
-        private void ClearSpawnedItems()
-        {
-            foreach (var item in _spawnedItems)
-            {
-                Destroy(item.gameObject); // Return to pool
-            }
-
-            _spawnedItems.Clear();
         }
     }
 }
