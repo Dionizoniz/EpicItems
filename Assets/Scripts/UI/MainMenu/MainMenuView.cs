@@ -23,15 +23,12 @@ namespace EpicItems.UI.MainMenu
 
         public void ShowShop()
         {
-            if (_spawnedItemPanel != null)
-            {
-                ShowSpawnedShopPanel();
-            }
-            else
+            if (_spawnedItemPanel == null)
             {
                 SpawnShopPanel();
             }
 
+            ShowSpawnedShopPanel();
             HideContent();
         }
 

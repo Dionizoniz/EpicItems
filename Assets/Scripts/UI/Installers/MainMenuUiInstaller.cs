@@ -18,7 +18,6 @@ namespace EpicItems.UI.Installers
         private void Awake()
         {
             SpawnSystems();
-            CreateInstances();
         }
 
         private void SpawnSystems()
@@ -26,14 +25,9 @@ namespace EpicItems.UI.Installers
             _mainMenu = Instantiate(_mainMenuControllerToSpawn);
         }
 
-        private void CreateInstances()
-        {
-        }
-
-        protected override void Start()
+        private void Start()
         {
             InitializeSystems();
-            base.Start();
         }
 
         private void InitializeSystems()
