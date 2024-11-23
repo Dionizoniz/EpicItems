@@ -1,6 +1,7 @@
 ﻿using EpicItems.Core.Entities.Installers;
 using EpicItems.Logic.Installers;
 using EpicItems.UI.MainMenu;
+using EpicItems.UI.Providers;
 using UnityEngine;
 
 namespace EpicItems.UI.Installers
@@ -13,7 +14,8 @@ namespace EpicItems.UI.Installers
         [Space, SerializeField]
         private MainMenuController _mainMenuControllerToSpawn;
 
-        private MainMenuController _mainMenu;
+        private IMainMenuController _mainMenu;
+        private IItemsFactory _itemsFactory;
 
         protected override void SpawnSystems()
         {
@@ -21,10 +23,18 @@ namespace EpicItems.UI.Installers
             _mainMenu = Instantiate(_mainMenuControllerToSpawn);
         }
 
+        protected override void CreateInstances()
+        {
+            base.CreateInstances();
+            _itemsFactory = new ItemsFactory();
+        }
+
         protected override void InitializeSystems()
         {
             base.InitializeSystems();
-            _mainMenu.InjectData(spawnedLogicInstaller.ItemsProvider, spawnedLogicInstaller.ExitGameProvider);
+
+            _mainMenu.InjectData(spawnedLogicInstaller.ItemsProvider, spawnedLogicInstaller.ExitGameProvider,
+                                 _itemsFactory);
         }
     }
 }

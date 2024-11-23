@@ -5,7 +5,7 @@ namespace EpicItems.UI.Providers
 {
     public interface IItemsFactory
     {
-        ItemController CreateArrowInstance(ItemController itemPrefab, Transform itemsRoot);
-        void ReturnArrowInstance(ItemController item);
+        ItemController CreateItemInstance(ItemController itemPrefab, Transform itemsRoot);
+        void ReturnItemInstance(ItemController item);
     }
 }

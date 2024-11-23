@@ -8,7 +8,7 @@ namespace EpicItems.UI.Providers
     {
         private readonly Stack<ItemController> _itemsPool = new();
 
-        public ItemController CreateArrowInstance(ItemController itemPrefab, Transform itemsRoot)
+        public ItemController CreateItemInstance(ItemController itemPrefab, Transform itemsRoot)
         {
             ItemController item = _itemsPool.Count > 0 ? _itemsPool.Pop() : Object.Instantiate(itemPrefab, itemsRoot);
             item._gameObject.SetActive(true);
@@ -16,7 +16,7 @@ namespace EpicItems.UI.Providers
             return item;
         }
 
-        public void ReturnArrowInstance(ItemController item)
+        public void ReturnItemInstance(ItemController item)
         {
             item._gameObject.SetActive(false);
             _itemsPool.Push(item);
