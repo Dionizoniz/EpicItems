@@ -1,5 +1,6 @@
 ﻿using System;
 using EpicItems.Logic.Items;
+using EpicItems.UI.Providers;
 
 namespace EpicItems.UI.ItemPanel
 {
@@ -7,7 +8,7 @@ namespace EpicItems.UI.ItemPanel
     {
         event Action OnClose;
 
-        void InjectData(IItemsProvider itemsProvider);
+        void InjectData(IItemsProvider itemsProvider, IItemsFactory itemsFactory);
         void ShowPanel();
         void ClosePanel();
     }

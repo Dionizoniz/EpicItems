@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using EpicItems.Core.DataServer;
 using EpicItems.Core.Entities.MVC;
+using EpicItems.UI.Providers;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,12 +21,18 @@ namespace EpicItems.UI.ItemPanel
         [SerializeField]
         private Image _loadingIndicator;
 
+        private IItemsFactory _itemsFactory;
         private readonly List<ItemController> _spawnedItems = new();
 
         protected override void Awake()
         {
             base.Awake();
             HideLoadingIndicator();
+        }
+
+        public void InjectData(IItemsFactory itemsFactory)
+        {
+            _itemsFactory = itemsFactory;
         }
 
         public void ShowPanel()
@@ -45,6 +52,7 @@ namespace EpicItems.UI.ItemPanel
                 SpawnItem(items[i], i);
             }
 
+            RefreshSpawnedItemsSiblings();
             UpdatePreviousPageButton(pageIndex);
             UpdateNextPageButton(maxIndex, items.Count);
         }
@@ -53,7 +61,7 @@ namespace EpicItems.UI.ItemPanel
         {
             foreach (var item in _spawnedItems)
             {
-                Destroy(item.gameObject); // Return to pool
+                _itemsFactory.ReturnItemInstance(item);
             }
 
             _spawnedItems.Clear();
@@ -61,9 +69,18 @@ namespace EpicItems.UI.ItemPanel
 
         private void SpawnItem(DataItem item, int itemIndex)
         {
-            ItemController spawnedItem = Instantiate(_itemToSpawn, _root);
+            ItemController spawnedItem = _itemsFactory.CreateItemInstance(_itemToSpawn, _root);
             spawnedItem.Initialize(itemIndex + 1, item);
             _spawnedItems.Add(spawnedItem);
+        }
+
+        private void RefreshSpawnedItemsSiblings()
+        {
+            for (var i = 0; i < _spawnedItems.Count; i++)
+            {
+                ItemController item = _spawnedItems[i];
+                item._transform.SetSiblingIndex(i);
+            }
         }
 
         private void UpdatePreviousPageButton(int pageIndex)

@@ -1,6 +1,7 @@
 ﻿using System;
 using EpicItems.Core.Entities.MVC;
 using EpicItems.Logic.Items;
+using EpicItems.UI.Providers;
 
 namespace EpicItems.UI.ItemPanel
 {
@@ -9,11 +10,14 @@ namespace EpicItems.UI.ItemPanel
         public event Action OnClose = delegate { };
 
         private IItemsProvider _itemsProvider;
+        private IItemsFactory _itemsFactory;
 
-        public void InjectData(IItemsProvider itemsProvider)
+        public void InjectData(IItemsProvider itemsProvider, IItemsFactory itemsFactory)
         {
             _itemsProvider = itemsProvider;
+            _itemsFactory = itemsFactory;
 
+            _view.InjectData(_itemsFactory);
             _model.InjectData(_itemsProvider);
         }
 

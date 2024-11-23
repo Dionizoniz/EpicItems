@@ -14,21 +14,29 @@ namespace EpicItems.UI.ItemPanel
         [SerializeField]
         private TextMeshProUGUI _descriptionLabel;
 
-        [Space, SerializeField]
-        private GameObject _isSpecialEffect;
+        [Space, SerializeField, ColorUsage(true, true)]
+        private Color _specialEffectColor;
         [SerializeField]
-        private Image _categoryImage;
+        private Image _specialEffectImage;
 
         [Space, SerializeField]
+        private Image _categoryImage;
+        [SerializeField]
         private ItemSetup _itemSetup;
 
         public void Initialize(int itemNumber, DataItem dataItem)
         {
             _numberLabel.text = itemNumber.ToString();
             _descriptionLabel.text = dataItem.Description;
-            _isSpecialEffect.SetActive(dataItem.Special);
 
+            SetupSpecialEffectImage(dataItem);
             TrySetupCategoryImage(dataItem);
+        }
+
+        private void SetupSpecialEffectImage(DataItem dataItem)
+        {
+            _specialEffectImage.color = _specialEffectColor;
+            _specialEffectImage.gameObject.SetActive(dataItem.Special);
         }
 
         private void TrySetupCategoryImage(DataItem dataItem)

@@ -12,8 +12,9 @@ namespace EpicItems.Core.Entities.MVC
         [SerializeField]
         protected TView _view;
 
-        private void Awake()
+        protected sealed override void Awake()
         {
+            base.Awake();
             Initialize();
         }
 

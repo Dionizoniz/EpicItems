@@ -1,6 +1,7 @@
 ﻿using EpicItems.Core.Entities.MVC;
 using EpicItems.Core.Providers;
 using EpicItems.Logic.Items;
+using EpicItems.UI.Providers;
 
 namespace EpicItems.UI.MainMenu
 {
@@ -8,13 +9,16 @@ namespace EpicItems.UI.MainMenu
     {
         private IItemsProvider _itemsProvider;
         private IExitGameProvider _exitGameProvider;
+        private IItemsFactory _itemsFactory;
 
-        public void InjectData(IItemsProvider itemsProvider, IExitGameProvider exitGameProvider)
+        public void InjectData(
+                IItemsProvider itemsProvider, IExitGameProvider exitGameProvider, IItemsFactory itemsFactory)
         {
             _itemsProvider = itemsProvider;
             _exitGameProvider = exitGameProvider;
+            _itemsFactory = itemsFactory;
 
-            _view.InjectData(_itemsProvider);
+            _view.InjectData(_itemsProvider, _itemsFactory);
             _model.InjectData(_exitGameProvider);
         }
 

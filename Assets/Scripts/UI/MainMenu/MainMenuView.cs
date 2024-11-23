@@ -1,6 +1,7 @@
 ﻿using EpicItems.Core.Entities.MVC;
 using EpicItems.Logic.Items;
 using EpicItems.UI.ItemPanel;
+using EpicItems.UI.Providers;
 using UnityEngine;
 
 namespace EpicItems.UI.MainMenu
@@ -14,11 +15,13 @@ namespace EpicItems.UI.MainMenu
         private GameObject _content;
 
         private IItemsProvider _itemsProvider;
+        private IItemsFactory _itemsFactory;
         private IItemPanelController _spawnedItemPanel;
 
-        public void InjectData(IItemsProvider itemsProvider)
+        public void InjectData(IItemsProvider itemsProvider, IItemsFactory itemsFactory)
         {
             _itemsProvider = itemsProvider;
+            _itemsFactory = itemsFactory;
         }
 
         public void ShowShop()
@@ -40,7 +43,7 @@ namespace EpicItems.UI.MainMenu
         private void SpawnShopPanel()
         {
             _spawnedItemPanel = Instantiate(_itemPanelToSpawn);
-            _spawnedItemPanel.InjectData(_itemsProvider);
+            _spawnedItemPanel.InjectData(_itemsProvider, _itemsFactory);
 
             _spawnedItemPanel.OnClose += ShowContent;
         }

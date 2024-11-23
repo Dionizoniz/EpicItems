@@ -87,7 +87,8 @@ MonoBehaviour:
   _transform: {fileID: 0}
   _numberLabel: {fileID: 7573340247770258482}
   _descriptionLabel: {fileID: 2296815368870945214}
-  _isSpecialEffect: {fileID: 2759806570527248212}
+  _specialEffectColor: {r: 1024, g: 991.8745, b: 0, a: 1}
+  _specialEffectImage: {fileID: 4514506001182666592}
   _categoryImage: {fileID: 8309382557466139777}
   _itemSetup: {fileID: 11400000, guid: 38fc5634b2ca2a34f8ffa2011ab174c1, type: 2}
 --- !u!1 &2759806570527248212
@@ -102,7 +103,7 @@ GameObject:
   - component: {fileID: 618994043344621191}
   - component: {fileID: 4514506001182666592}
   m_Layer: 5
-  m_Name: IsSpecialIndicatorImage
+  m_Name: SpecialIndicatorImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
