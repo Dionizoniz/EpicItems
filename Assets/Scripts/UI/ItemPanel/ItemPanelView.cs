@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using EpicItems.Core.DataServer;
 using EpicItems.Core.Entities.MVC;
 using EpicItems.UI.Providers;
@@ -59,7 +60,7 @@ namespace EpicItems.UI.ItemPanel
 
         private void ClearSpawnedItems()
         {
-            foreach (var item in _spawnedItems)
+            foreach (ItemController item in _spawnedItems)
             {
                 _itemsFactory.ReturnItemInstance(item);
             }
@@ -107,6 +108,33 @@ namespace EpicItems.UI.ItemPanel
         {
             _gameObject.SetActive(false);
             ClearSpawnedItems();
+        }
+
+        private void OnDestroy()
+        {
+            DisposeItems();
+        }
+
+        private void DisposeItems()
+        {
+            if (_itemsFactory != null)
+            {
+                ClearSpawnedItems();
+            }
+            else
+            {
+                DestroyItems();
+            }
+        }
+
+        private void DestroyItems()
+        {
+            foreach (ItemController item in _spawnedItems)
+            {
+                Destroy(item._gameObject);
+            }
+
+            _spawnedItems.Clear();
         }
     }
 }

@@ -21,5 +21,15 @@ namespace EpicItems.UI.Providers
             item._gameObject.SetActive(false);
             _itemsPool.Push(item);
         }
+
+        ~ItemsFactory()
+        {
+            foreach (ItemController item in _itemsPool)
+            {
+                Object.Destroy(item._gameObject);
+            }
+
+            _itemsPool.Clear();
+        }
     }
 }

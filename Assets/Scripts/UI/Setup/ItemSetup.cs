@@ -16,7 +16,7 @@ namespace EpicItems.UI.Setup
         {
             Sprite result = null;
 
-            foreach (var category in _categories)
+            foreach (CategoryData category in _categories)
             {
                 if (category.CategoryType == categoryType)
                 {
