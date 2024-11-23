@@ -9,7 +9,7 @@ namespace EpicItems.Core.Engine
         [HideInInspector]
         public Transform _transform;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             CacheReferences();
         }

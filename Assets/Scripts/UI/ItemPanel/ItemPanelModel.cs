@@ -23,7 +23,7 @@ namespace EpicItems.UI.ItemPanel
             }
             else
             {
-                // TODO show loading indicator
+                _view.ShowLoadingIndicator();
                 AttachToEvents();
             }
         }
@@ -31,8 +31,8 @@ namespace EpicItems.UI.ItemPanel
         private void SpawnFirstPage()
         {
             DetachFromEvents();
+            _view.HideLoadingIndicator();
 
-            // TODO hide loading indicator
             _currentPageIndex = 0;
             SpawnItemsForCurrentPage();
         }

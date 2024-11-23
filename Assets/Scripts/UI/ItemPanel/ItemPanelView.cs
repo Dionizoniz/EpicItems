@@ -13,12 +13,20 @@ namespace EpicItems.UI.ItemPanel
         [SerializeField]
         private Transform _root;
 
-        [SerializeField]
+        [Space, SerializeField]
         private Button _previousPageButton;
         [SerializeField]
         private Button _nextPageButton;
+        [SerializeField]
+        private Image _loadingIndicator;
 
         private readonly List<ItemController> _spawnedItems = new();
+
+        protected override void Awake()
+        {
+            base.Awake();
+            HideLoadingIndicator();
+        }
 
         public void ShowPanel()
         {
@@ -66,6 +74,16 @@ namespace EpicItems.UI.ItemPanel
         private void UpdateNextPageButton(int maxIndex, int itemsCount)
         {
             _nextPageButton.interactable = maxIndex < itemsCount;
+        }
+
+        public void ShowLoadingIndicator()
+        {
+            _loadingIndicator.gameObject.SetActive(true);
+        }
+
+        public void HideLoadingIndicator()
+        {
+            _loadingIndicator.gameObject.SetActive(false);
         }
 
         public void ClosePanel()
