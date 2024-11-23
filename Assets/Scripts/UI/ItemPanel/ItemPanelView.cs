@@ -52,6 +52,7 @@ namespace EpicItems.UI.ItemPanel
                 SpawnItem(items[i], i);
             }
 
+            RefreshSpawnedItemsSiblings();
             UpdatePreviousPageButton(pageIndex);
             UpdateNextPageButton(maxIndex, items.Count);
         }
@@ -71,6 +72,15 @@ namespace EpicItems.UI.ItemPanel
             ItemController spawnedItem = _itemsFactory.CreateItemInstance(_itemToSpawn, _root);
             spawnedItem.Initialize(itemIndex + 1, item);
             _spawnedItems.Add(spawnedItem);
+        }
+
+        private void RefreshSpawnedItemsSiblings()
+        {
+            for (var i = 0; i < _spawnedItems.Count; i++)
+            {
+                ItemController item = _spawnedItems[i];
+                item._transform.SetSiblingIndex(i);
+            }
         }
 
         private void UpdatePreviousPageButton(int pageIndex)
