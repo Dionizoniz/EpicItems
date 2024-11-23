@@ -16,20 +16,18 @@ namespace EpicItems.Logic.Installers
         public IItemsProvider ItemsProvider { get; private set; }
         public IExitGameProvider ExitGameProvider { get; private set; }
 
-        private void Awake()
+        protected override void SpawnSystems()
         {
-            SpawnSystems();
-            CreateInstances();
-        }
+            base.SpawnSystems();
 
-        private void SpawnSystems()
-        {
             Instantiate(_eventSystem);
             Instantiate(_camera);
         }
 
-        private void CreateInstances()
+        protected override void CreateInstances()
         {
+            base.CreateInstances();
+
             ItemsProvider = new ItemsProvider();
             ExitGameProvider = new ExitGameProvider();
         }

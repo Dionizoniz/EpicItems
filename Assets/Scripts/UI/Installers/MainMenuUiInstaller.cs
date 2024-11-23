@@ -15,23 +15,15 @@ namespace EpicItems.UI.Installers
 
         private MainMenuController _mainMenu;
 
-        private void Awake()
+        protected override void SpawnSystems()
         {
-            SpawnSystems();
-        }
-
-        private void SpawnSystems()
-        {
+            base.SpawnSystems();
             _mainMenu = Instantiate(_mainMenuControllerToSpawn);
         }
 
-        private void Start()
+        protected override void InitializeSystems()
         {
-            InitializeSystems();
-        }
-
-        private void InitializeSystems()
-        {
+            base.InitializeSystems();
             _mainMenu.InjectData(spawnedLogicInstaller.ItemsProvider, spawnedLogicInstaller.ExitGameProvider);
         }
     }
