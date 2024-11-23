@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7067945357969423578}
   - component: {fileID: 2584949009474916073}
   m_Layer: 5
-  m_Name: LoadingIndicator
+  m_Name: LoadingIndicatorImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
